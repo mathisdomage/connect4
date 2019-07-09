@@ -1,18 +1,19 @@
-board= [[1],[],[],[],[],[],[]]
-row= 6
-col= 7
+board= [["O"],["X"],[],[],[],[],[]]
 
 def display():
-    print(" 1"," 2"," 3"," 4"," 5"," 6"," 7")
-    print("╔══╦══╦══╦══╦══╦══╦══╗")
-    diff = 5
-    for c in range (row):
+    print("╔═══╦═══╦═══╦═══╦═══╦═══╦═══╗")
+    
+    for c in range (5,-1,-1):
         print("║",end="")
-        for r in range (col):
+        for r in range (7):
             try:
-                print(board[r][c+diff],"║",end ="")
-            except Exception as e:
-                print(" ","║",end="")     
+                print("",board[r][c],"║",end ="")
+            except IndexError as e:
+                print("  ","║",end="")     
         print("")
-        diff= diff-2
+        if c > 0 :
+            print("╠═══╬═══╬═══╬═══╬═══╬═══╬═══╣")
+        else:
+            print("╚═══╩═══╩═══╩═══╩═══╩═══╩═══╝")
+    print("  1   2   3   4   5   6   7")    
 display()
