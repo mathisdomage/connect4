@@ -158,7 +158,7 @@ class TestWinningMoveMethod(unittest.TestCase):
 
     def test_lose(self):
         self.assertFalse(winning_move(
-            [[],
+            [[1],
              [],
              [],
              [],

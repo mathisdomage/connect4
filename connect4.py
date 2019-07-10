@@ -28,96 +28,48 @@ def play(col,board,player):
     display(board)
   
 
-def winning_move(board,col):
+def winning_move(board, col):
+    WINNING_RULES = (
+        # vertical
+        (( 0, -3), ( 0, -2), ( 0, -1)),
+
+        # horizontal
+        ((-3,  0), (-2,  0), (-1,  0)),
+        ((-2,  0), (-1,  0), ( 1,  0)),
+        ((-1,  0), ( 1,  0), ( 2,  0)),
+        (( 1,  0), ( 2,  0), ( 3,  0)),
+
+        # diagonal
+        ((-3, -3), (-2, -2), (-1, -1)),
+        ((-2, -2), (-1, -1), ( 1,  1)),
+        ((-1, -1), ( 1,  1), ( 2,  2)),
+        (( 1,  1), ( 2,  2), ( 3,  3)),        
+        ((-3,  3), (-2,  2), (-1,  1)),
+        ((-2,  2), (-1,  1), ( 1, -1)),
+        ((-1,  1), ( 1, -1), ( 2, -2)),
+        (( 1, -1), ( 2, -2), ( 3, -3)),                
+    )
     
-    colheight = len(board[col-1])
+    current_col = col-1
+    current_row = len(board[current_col])-1   
+    current_player = board[current_col][current_row]
+    for rule in WINNING_RULES:
+        try:
+            for relative_col, relative_row in rule:
+                other_col = current_col+relative_col
+                other_row = current_row+relative_row
+
+                if other_col < 0 or other_row < 0:
+                    raise IndexError
+
+                if board[other_col][other_row] != current_player:
+                    break
+            else:
+                return True
+        except IndexError:
+            pass
     
-    
-    #condition colonne
-    if colheight >= 4 :
-        if board[col-1][colheight-1] == board[col-1][colheight-2] == board[col-1][colheight-3] == board[col-1][colheight-4]:
-            return True
-    
-    
-    #condition ligne
-    try:
-        if board[col-1][colheight-1] == board[col][colheight-1] == board[col+1][colheight-1] == board[col+2][colheight-1]:
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-2][colheight-1] == board[col-1][colheight-1] == board[col][colheight-1] == board[col+1][colheight-1]:
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-3][colheight-1] == board[col-2][colheight-1] == board[col-1][colheight-1] == board[col][colheight-1]:
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-4][colheight-1] ==board[col-3][colheight-1] == board[col-2][colheight-1] ==  board[col-1][colheight-1]:
-            win = True
-            return win
-    except:
-        pass
-    
-   
-    #diagonales croissantes
-    try:
-        if board[col-1][colheight-1] == board[col][colheight] == board[col+1][colheight+1] == board[col+2][colheight+2]:
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-2][colheight-2] == board[col-1][colheight-1] == board[col][colheight] == board[col+1][colheight+1] :
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-3][colheight-3] == board[col-2][colheight-2] == board[col-1][colheight-1] == board[col][colheight] :
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-4][colheight-4] == board[col-3][colheight-3] == board[col-2][colheight-2] == board[col-1][colheight-1]:
-            win = True
-            return win
-    except :
-        pass
-    
-    
-    #diagonales décroissantes
-    try:
-        if board[col-1][colheight-1] == board[col][colheight-2] == board[col+1][colheight-3] == board[col+2][colheight-4]:
-            win = True
-            return win
-    except:
-        pass    
-    try:
-        if board[col-2][colheight] == board[col-1][colheight-1] == board[col][colheight-2] == board[col+1][colheight-3] :
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-3][colheight+1] == board[col-2][colheight] == board[col-1][colheight-1] == board[col][colheight-2] :
-            win = True
-            return win
-    except:
-        pass
-    try:
-        if board[col-4][colheight+2] == board[col-3][colheight+1] == board[col-2][colheight] == board[col-1][colheight-1]:
-            win = True
-            return win
-    except:
-        pass
+    return False
 
 
 def run():
