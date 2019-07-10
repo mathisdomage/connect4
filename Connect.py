@@ -1,6 +1,8 @@
 import os
 board = [[], [], [], [], [], [], []]
-player =1
+player =2
+turn=0
+win = False
 def display():
     os.system("clear")
     print("╔═══╦═══╦═══╦═══╦═══╦═══╦═══╗")
@@ -22,29 +24,32 @@ def display():
             print("╚═══╩═══╩═══╩═══╩═══╩═══╩═══╝")
     print("  1   2   3   4   5   6   7")    
 
-def play():
-    col = int(input("Which column do you want to play ?"))    
-    #Si cette ligne n'est pas là le joueur ne peut pas jouer la colonne 7 
+def play(col):
     board[col-1].append(player)
     display()
   
 
-def winning_move(board,col):
-    win = False
-
-
+def winning_move(board,col,win):
+    colheight= len(board[col-1])
+    colheight= colheight-1
+   
 
 
 
 
 
 display()
-while True:    
-    print("It's Player",player,"'s Turn")
-    play()
-    print(col)
-    print(boardheight)
+while win != True or turn < 42:    
     if player == 1:
         player = 2
     else:
         player = 1
+    print("It's Player",player,"'s Turn")
+    col = int(input("Which column do you want to play ?"))
+    play(col)
+    colheight= len(board[col-1])
+    winning_move(board,col,win)
+    print(colheight)
+    turn= turn+1
+if win == True:
+    print("Good Game Player",player,"You Win")

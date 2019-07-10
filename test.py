@@ -1,6 +1,10 @@
-board = [[1], [1], [1], [1], [], [], []]
-position = board[1][1]
+import os
+board = [[], [], [], [], [], [], []]
+player =2
+turn=0
+win = False
 def display():
+    os.system("clear")
     print("╔═══╦═══╦═══╦═══╦═══╦═══╦═══╗")
     for c in range (5, -1, -1):
         print("║", end ="")
@@ -18,8 +22,43 @@ def display():
             print("╠═══╬═══╬═══╬═══╬═══╬═══╬═══╣")
         else:
             print("╚═══╩═══╩═══╩═══╩═══╩═══╩═══╝")
-    print("  1   2   3   4   5   6   7")
+    print("  1   2   3   4   5   6   7")    
 
-def winning_move(board,position):
-    if p
+def play(col):
+    board[col-1].append(player)
+    display()
+  
 
+def winning_move(board,col,win,colheight):
+    #condition colonne
+    if colheight >= 4 :
+        if board[col-1][colheight-1] == board[col-1][colheight-2] == board[col-1][colheight-3] == board[col-1][colheight-4]:
+            win = True
+            return win
+        else:
+            win = False
+            return win
+    #condition ligne
+    
+
+
+
+
+
+display()
+win = False
+while win == False:    
+    if player == 1:
+        player = 2
+    else:
+        player = 1
+    print("It's Player",player,"'s Turn")
+    col = int(input("Which column do you want to play ?"))
+    play(col)
+    colheight= len(board[col-1])
+    winning_move(board,col,win,colheight)
+    win = winning_move(board,col,win,colheight)
+    turn= turn+1
+if win== True :
+    print("gg, player",player,"You win !")
+    
