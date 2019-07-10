@@ -1,5 +1,6 @@
 import unittest
 from Connect.py import winning_move
+
 class TestWinningMoveMethod(unittest.TestCase):
 
     def test_win(self):
@@ -45,13 +46,13 @@ class TestWinningMoveMethod(unittest.TestCase):
         ))
         self.assertTrue(winning_move(
         [[2,2,2,2],
-         [1,1,1]
-         [1,1]
-         [2]
-         []
-         []
-         []
-        ]
+         [1,1,1],
+         [1,1],
+         [2],
+         [],
+         [],
+         [],
+        ],
         0
         ))
         self.assertTrue(winning_move(
@@ -145,7 +146,7 @@ class TestWinningMoveMethod(unittest.TestCase):
         0
         ))
     def testlose(self):
-        self.assertFalsewinning_move(
+        self.assertFalse(winning_move(
             [[],
              [],
              [],
@@ -205,7 +206,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              []],
             1
         ))
-        self.assertFalse(winning_move(
+        self.assertFalse(winning_move
             [[1,2],
              [1],
              [],
@@ -214,7 +215,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              []],
             1
-        ))
+        )
         self.assertFalse(winning_move(
             [[1,2,1],
              [],
@@ -225,3 +226,6 @@ class TestWinningMoveMethod(unittest.TestCase):
              []],
             0
         ))
+
+    if __name__ == "__main__":
+        unittest.main()
