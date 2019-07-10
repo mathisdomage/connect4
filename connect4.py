@@ -1,7 +1,7 @@
 import os
 
 
-def display():
+def display(board):
     os.system("clear")
     print("╔═══╦═══╦═══╦═══╦═══╦═══╦═══╗")
     for c in range (5, -1, -1):
@@ -71,7 +71,7 @@ def run():
     board = [[], [], [], [], [], [], []]
     player =2
 
-    display()
+    display(board)
     while True:    
         if player == 1:
             player = 2
