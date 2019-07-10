@@ -33,10 +33,8 @@ def winning_move(board,col,win,colheight):
     #condition colonne
     if colheight >= 4 :
         if board[col-1][colheight-1] == board[col-1][colheight-2] == board[col-1][colheight-3] == board[col-1][colheight-4]:
-            win = True
-            return win
+            return win 
         else:
-            win = False
             return win
     #condition ligne
     
@@ -57,7 +55,6 @@ while win == False:
     play(col)
     colheight= len(board[col-1])
     winning_move(board,col,win,colheight)
-    win = winning_move(board,col,win,colheight)
     turn= turn+1
 if win== True :
     print("gg, player",player,"You win !")
