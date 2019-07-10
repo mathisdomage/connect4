@@ -5,14 +5,14 @@ class TestWinningMoveMethod(unittest.TestCase):
 
     def test_win(self):
         self.assertTrue(winning_move(
-        [[1, 1, 1, 1],
-         [2, 2, 2],
-         [],
+        [[],
+         [1,1,1,1],
+         [2,2,2],
          [],
          [],
          [],
          []],
-        0
+        2
         ))                
         self.assertTrue(winning_move(
         [[1, 1, 1, 2],
@@ -22,7 +22,7 @@ class TestWinningMoveMethod(unittest.TestCase):
          [2],
          [],
          []],
-        3
+        4
         ))
         self.assertTrue(winning_move(
         [[1,2],
@@ -32,7 +32,7 @@ class TestWinningMoveMethod(unittest.TestCase):
          [2],
          [],
          []],
-        1 
+        2 
         ))
         self.assertTrue(winning_move(
         [[2,1,2,1],
@@ -42,7 +42,7 @@ class TestWinningMoveMethod(unittest.TestCase):
          [2],
          [],
          []],
-        1 
+        4 
         ))
         self.assertTrue(winning_move(
             [[2,2,2,2],
@@ -52,7 +52,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              [],],
-            0
+            1
         ))
         self.assertTrue(winning_move(
             [[1],
@@ -62,7 +62,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [2],
              [2],
              [2]],
-            2
+            3
         ))
         self.assertTrue(winning_move(
             [[1,2],
@@ -72,7 +72,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [2],
              [],
              []],
-            3 
+            4 
         ))
         self.assertTrue(winning_move(
             [[1,2],
@@ -82,7 +82,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              [2]],
-             3 
+             4 
         ))
         self.assertTrue(winning_move(
             [[2,1,2,1],
@@ -92,7 +92,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-             0 
+             1 
         ))
         self.assertTrue(winning_move(
             [[2,1,2,1],
@@ -102,7 +102,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-             2 
+             3 
         ))
         self.assertTrue(winning_move(
             [[2,1,2,1],
@@ -112,7 +112,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [2],
              [],
              []],
-             3 
+             4 
         ))
         self.assertTrue(winning_move(
             [[1, 1, 1, 2],
@@ -122,7 +122,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [2],
              [],
              []],
-             2
+             3
         ))
         self.assertTrue(winning_move(
             [[1, 1, 1, 2],
@@ -142,7 +142,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [2,2],
              [1],
              [1]],
-            0
+            1
         ))
 
     def test_lose(self):
@@ -154,7 +154,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            0
+            1
         ))
         self.assertFalse(winning_move(
             [[1,1,1],
@@ -164,7 +164,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            0
+            1
         ))
         self.assertFalse(winning_move(
             [[1,1,1,2],
@@ -174,7 +174,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            0
+            1
         ))
         self.assertFalse(winning_move(
             [[1],
@@ -184,7 +184,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            0
+            1
             ))
         self.assertFalse(winning_move(
             [[1,2],
@@ -194,7 +194,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            0
+            1
         ))
         self.assertFalse(winning_move(
             [[1],
@@ -204,7 +204,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            1
+            2
         ))
         self.assertFalse(winning_move(
             [[1,2],
@@ -214,7 +214,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            1
+            2
         ))
         self.assertFalse(winning_move(
             [[1,2,1],
@@ -224,7 +224,7 @@ class TestWinningMoveMethod(unittest.TestCase):
              [],
              [],
              []],
-            0
+            1
         ))
 
 if __name__ == "__main__":

@@ -23,21 +23,20 @@ def display(board):
     print("  1   2   3   4   5   6   7")    
 
 
-def play(col):
+def play(col,board,player):
     board[col-1].append(player)
-    display()
+    display(board)
   
 
-def winning_move(board, last_col):
-    return True
-    colheight = len(col-1)
+def winning_move(board,col):
+    
+    colheight = len(board[col-1])
     
     
     #condition colonne
     if colheight >= 4 :
         if board[col-1][colheight-1] == board[col-1][colheight-2] == board[col-1][colheight-3] == board[col-1][colheight-4]:
-            win = True
-            return win
+            return True
     
     
     #condition ligne
@@ -66,7 +65,7 @@ def winning_move(board, last_col):
     except:
         pass
     
-    
+   
     #diagonales croissantes
     try:
         if board[col-1][colheight-1] == board[col][colheight] == board[col+1][colheight+1] == board[col+2][colheight+2]:
@@ -133,7 +132,7 @@ def run():
             player = 1
         print("It's Player",player,"'s Turn")
         col = int(input("Which column do you want to play ?"))
-        play(col)
+        play(col,board,player)
 
         if winning_move(board, col):
             print("gg, player",player,"You win !")
