@@ -1,4 +1,4 @@
-# README
+# Connect4
 
 
 ## Play!
