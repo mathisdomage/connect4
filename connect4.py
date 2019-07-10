@@ -70,10 +70,9 @@ def winning_move(board, last_col):
 def run():
     board = [[], [], [], [], [], [], []]
     player =2
-    turn=0
-    win = False    
+
     display()
-    while win != True:    
+    while True:    
         if player == 1:
             player = 2
         else:
@@ -81,13 +80,11 @@ def run():
         print("It's Player",player,"'s Turn")
         col = int(input("Which column do you want to play ?"))
         play(col)
-        colheight= len(board[col-1])
-        winning_move(board,col,win,colheight)
-        win = winning_move(board,col,win,colheight)
-        turn= turn+1
-    if win== True :
-        print("gg, player",player,"You win !")
-    
+
+        if winning_move(board, col):
+            print("gg, player",player,"You win !")
+            break
+        
     
 if __name__ == "__main__":
     run()
