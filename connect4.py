@@ -1,6 +1,28 @@
 import os
 
 
+WINNING_RULES = (
+    # vertical
+    (( 0, -3), ( 0, -2), ( 0, -1)),
+
+    # horizontal
+    ((-3,  0), (-2,  0), (-1,  0)),
+    ((-2,  0), (-1,  0), ( 1,  0)),
+    ((-1,  0), ( 1,  0), ( 2,  0)),
+    (( 1,  0), ( 2,  0), ( 3,  0)),
+
+    # diagonal
+    ((-3, -3), (-2, -2), (-1, -1)),
+    ((-2, -2), (-1, -1), ( 1,  1)),
+    ((-1, -1), ( 1,  1), ( 2,  2)),
+    (( 1,  1), ( 2,  2), ( 3,  3)),        
+    ((-3,  3), (-2,  2), (-1,  1)),
+    ((-2,  2), (-1,  1), ( 1, -1)),
+    ((-1,  1), ( 1, -1), ( 2, -2)),
+    (( 1, -1), ( 2, -2), ( 3, -3)),                
+)
+
+
 def display(board):
     os.system("clear")
     print("╔═══╦═══╦═══╦═══╦═══╦═══╦═══╗")
@@ -29,27 +51,6 @@ def play(col,board,player):
   
 
 def winning_move(board, col):
-    WINNING_RULES = (
-        # vertical
-        (( 0, -3), ( 0, -2), ( 0, -1)),
-
-        # horizontal
-        ((-3,  0), (-2,  0), (-1,  0)),
-        ((-2,  0), (-1,  0), ( 1,  0)),
-        ((-1,  0), ( 1,  0), ( 2,  0)),
-        (( 1,  0), ( 2,  0), ( 3,  0)),
-
-        # diagonal
-        ((-3, -3), (-2, -2), (-1, -1)),
-        ((-2, -2), (-1, -1), ( 1,  1)),
-        ((-1, -1), ( 1,  1), ( 2,  2)),
-        (( 1,  1), ( 2,  2), ( 3,  3)),        
-        ((-3,  3), (-2,  2), (-1,  1)),
-        ((-2,  2), (-1,  1), ( 1, -1)),
-        ((-1,  1), ( 1, -1), ( 2, -2)),
-        (( 1, -1), ( 2, -2), ( 3, -3)),                
-    )
-    
     current_col = col-1
     current_row = len(board[current_col])-1   
     current_player = board[current_col][current_row]
@@ -74,14 +75,10 @@ def winning_move(board, col):
 
 def run():
     board = [[], [], [], [], [], [], []]
-    player = 0
+    player = 1
 
     display(board)
     while True:    
-        if player == 1:
-            player = 2
-        else:
-            player = 1
         print("It's Player",player,"'s Turn")
         col = int(input("Which column do you want to play ?"))
         play(col,board,player)
@@ -89,6 +86,11 @@ def run():
         if winning_move(board, col):
             print("gg, player",player,"You win !")
             break
+
+        if player == 1:
+            player = 2
+        else:
+            player = 1            
         
     
 if __name__ == "__main__":
