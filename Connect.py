@@ -30,8 +30,8 @@ def play(col):
   
 
 def winning_move(board,col,win):
-    colheight= len(board[col-1])
-    colheight= colheight-1
+    return False
+    
    
 
 
@@ -47,9 +47,6 @@ while win != True or turn < 42:
     print("It's Player",player,"'s Turn")
     col = int(input("Which column do you want to play ?"))
     play(col)
-    colheight= len(board[col-1])
-    winning_move(board,col,win)
-    print(colheight)
     turn= turn+1
 if win == True:
     print("Good Game Player",player,"You Win")
