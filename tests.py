@@ -144,6 +144,17 @@ class TestWinningMoveMethod(unittest.TestCase):
              [1]],
             1
         ))
+        self.assertTrue(winning_move(
+            [[1, 2, 1, 2, 1, 1],
+             [2, 1, 2, 1, 2, 1],
+             [2, 1, 2, 1, 2, 1],
+             [1, 2, 1, 2, 1, 2],             
+             [1, 2, 1, 2, 1, 2],
+             [2, 1, 2, 1, 2, 2],
+             [1, 2, 1, 2, 1, 2]],
+            7
+        ))                
+
 
     def test_lose(self):
         self.assertFalse(winning_move(
@@ -226,6 +237,26 @@ class TestWinningMoveMethod(unittest.TestCase):
              []],
             1
         ))
+        self.assertFalse(winning_move(
+            [[],
+             [1, 1, 1],
+             [2, 2, 2, 1],
+             [],
+             [],
+             [],
+             []],
+            2
+        ))        
+        self.assertFalse(winning_move(
+            [[1, 2, 1, 2, 1, 2],
+             [2, 1, 2, 1, 2, 1],
+             [2, 1, 2, 1, 2, 1],
+             [1, 2, 1, 2, 1, 2],             
+             [1, 2, 1, 2, 1, 2],
+             [2, 1, 2, 1, 2, 1],
+             [1, 2, 1, 2, 1, 2]],
+            7
+        ))                
 
 if __name__ == "__main__":
     unittest.main()
