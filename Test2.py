@@ -24,11 +24,11 @@ class TestWinningMoveMethod(unittest.TestCase):
         3
         ))
         self.assertTrue(winning_move(
-        [[1],
+        [[1,2],
+         [1,2],
+         [1,2],
          [1],
-         [1],
-         [1],
-         [],
+         [2],
          [],
          []],
         1 
@@ -47,7 +47,7 @@ class TestWinningMoveMethod(unittest.TestCase):
         [[2,2,2,2],
          [1,1,1]
          [1,1]
-         []
+         [2]
          []
          []
          []
@@ -59,29 +59,29 @@ class TestWinningMoveMethod(unittest.TestCase):
          [1],
          [1],
          [1],
-         [],
-         [],
-         []],
+         [2],
+         [2],
+         [2]],
         2
         ))
         self.assertTrue(winning_move(
-        [[1],
+        [[1,2],
          [1],
+         [1,2],
          [1],
-         [1],
+         [2],
          [],
-         [],
-         []],
+         [2]],
         3 
         ))
         self.assertTrue(winning_move(
-        [[1],
-         [1],
+        [[1,2],
+         [1,2],
          [1],
          [1],
          [],
          [],
-         []],
+         [2]],
         0 
         ))
         self.assertTrue(winning_move(
@@ -97,7 +97,7 @@ class TestWinningMoveMethod(unittest.TestCase):
         self.assertTrue(winning_move(
         [[2,1,2,1],
          [2,2,1,2],
-         [1,1,1,2],
+         [1,1],
          [1],
          [],
          [],
@@ -107,10 +107,71 @@ class TestWinningMoveMethod(unittest.TestCase):
         self.assertTrue(winning_move(
         [[2,1,2,1],
          [2,2,1,2],
-         [1,1,1,2],
+         [1,1,1,2,1],
          [1],
          [],
          [],
          []],
         3 
-        ))         
+        ))
+        self.assertTrue(winning_move(
+        [[1, 1, 1, 2],
+         [2, 1, 2],
+         [1, 2],
+         [2, 2, 1, 1],
+         [2],
+         [],
+         []],
+        2
+        ))
+        self.assertTrue(winning_move(
+        [[1, 1, 1, 2],
+         [2, 1, 2],
+         [1, 2, 1],
+         [2, 2, 1, 1],
+         [2],
+         [2],
+         []],
+        1
+        ))
+        self.assertTrue(winning_move(
+        [[1, 1, 1, 2],
+         [2, 1, 2],
+         [1, 2, 1],
+         [2, 2, 1, 1],
+         [2,2],
+         [],
+         []],
+        0
+        ))
+    def testlose(self):
+        self.assertFalse(is_winning_move(
+            [[],
+             [],
+             [],
+             [],
+             [],
+             [],
+             []],
+            0
+        ))
+        self.assertFalse(is_winning_move(
+            [[1,1,1],
+             [2,2,2],
+             [],
+             [],
+             [],
+             [],
+             []],
+            0
+        ))
+        self.assertFalse(is_winning_move(
+            [[1,1,1,2],
+             [2,2],
+             [],
+             [],
+             [],
+             [],
+             []],
+            0
+        ))
