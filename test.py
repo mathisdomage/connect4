@@ -33,19 +33,42 @@ def winning_move(board,col,win,colheight):
     #condition colonne
     if colheight >= 4 :
         if board[col-1][colheight-1] == board[col-1][colheight-2] == board[col-1][colheight-3] == board[col-1][colheight-4]:
-            return win 
-        else:
+            win = True
             return win
     #condition ligne
-    
-
-
-
+    try:
+        if board[col-1][colheight-1] == board[col][colheight-1] == board[col+1][colheight-1] == board[col+2][colheight-1]:
+            win = True
+            return win
+    except:
+        pass
+    try:
+        if board[col-2][colheight-1] == board[col-1][colheight-1] == board[col][colheight-1] == board[col+1][colheight-1]:
+            win = True
+            return win
+    except:
+        pass
+    try:
+        if board[col-3][colheight-1] == board[col-2][colheight-1] == board[col-1][colheight-1] == board[col][colheight-1]:
+            win = True
+            return win
+    except:
+        pass
+    try:
+        if board[col-4][colheight-1] ==board[col-3][colheight-1] == board[col-2][colheight-1] ==  board[col-1][colheight-1]:
+            win = True
+            return win
+    except:
+        pass
+    #diagonales croissantes
+    try:
+        if board[col-1][colheight-1] == board[col][colheight] == board[col+1]
+    except:
+        pass
 
 
 display()
-win = False
-while win == False:    
+while win != True:    
     if player == 1:
         player = 2
     else:
@@ -55,6 +78,7 @@ while win == False:
     play(col)
     colheight= len(board[col-1])
     winning_move(board,col,win,colheight)
+    win = winning_move(board,col,win,colheight)
     turn= turn+1
 if win== True :
     print("gg, player",player,"You win !")
