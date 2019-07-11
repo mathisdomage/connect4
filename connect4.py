@@ -1,5 +1,5 @@
 import os
-from robot import robot_turn
+from robotlvl2 import robot_testvalue
 
 WINNING_RULES = (
     # vertical
@@ -94,8 +94,8 @@ def run():
                 print("It's Human Player Turn")
                 col = int(input("Which column do you want to play ? Stupid human"))
             if player == 2:
-                robot_turn(board,col)
-                col = robot_turn(board,col)
+                robot_testvalue(board,col)
+                col = robot_testvalue(board,col)
                 print(col)
         
         play(col,board,player)
