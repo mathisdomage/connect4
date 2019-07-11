@@ -10,24 +10,5 @@ def robot_turn(board,col):
             break
     return col
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     robot_turn()
