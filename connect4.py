@@ -1,5 +1,5 @@
 import os
-
+from robot import robot_turn
 
 WINNING_RULES = (
     # vertical
@@ -77,10 +77,27 @@ def run():
     board = [[], [], [], [], [], [], []]
     player = 1
 
+    
+    
+    
+    
+    os.system("clear")
+    player_type= int(input("Do you to play vs a Robot (type out 1) or vs a human(you will play on the same computer)(type out 2)"))
     display(board)
     while True:    
-        print("It's Player",player,"'s Turn")
-        col = int(input("Which column do you want to play ?"))
+        if player_type == 2:
+            print("It's Player",player,"'s Turn")
+            col = int(input("Which column do you want to play ?"))
+        elif player_type == 1:
+            print("Warning you will be destroy by my Terminator (diabolic laugh)") 
+            if player == 1:
+                print("It's Human Player Turn")
+                col = int(input("Which column do you want to play ? Stupid human"))
+            if player == 2:
+                robot_turn(board,col)
+                col = robot_turn(board,col)
+                print(col)
+        
         play(col,board,player)
 
         if winning_move(board, col):
