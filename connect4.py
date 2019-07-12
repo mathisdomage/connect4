@@ -76,11 +76,6 @@ def winning_move(board, col):
 def run():
     board = [[], [], [], [], [], [], []]
     player = 1
-
-    
-    
-    
-    
     os.system("clear")
     player_type= int(input("Do you to play vs a Robot (type out 1) or vs a human(you will play on the same computer)(type out 2)"))
     display(board)
@@ -94,7 +89,7 @@ def run():
                 print("It's Human Player Turn")
                 col = int(input("Which column do you want to play ? Stupid human"))
             if player == 2:
-                robot_testvalue(board,col)
+                
                 col = robot_testvalue(board,col)
                 print(col)
         
