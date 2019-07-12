@@ -32,7 +32,10 @@ def robot_testvalue(board,col):
             except IndexError:
                 pass
             #vertical
-            
+            if len(boardtest[i]) >= 2:
+                if boardtest[i][heighttest] == boardtest[i][heighttest-1]:
+                    score = 2
+                
             #diagonale croissante
             try:
                 if boardtest[i-1][heighttest-1] == boardtest[i][heighttest]:        
@@ -75,8 +78,9 @@ def robot_testvalue(board,col):
             except IndexError :
                 pass
             #vertical
-        
-                pass
+            if len(boardtest[i]) > 3:
+                if boardtest[i][heighttest] == boardtest[i][heighttest-1] == boardtest[i][heighttest-2]:
+                    score = 3
             #diagonale croissante
             try:
                 if boardtest[i][heighttest] == boardtest[i+1][heighttest+1] == boardtest[i+2][heighttest+2]:
@@ -206,7 +210,9 @@ def robot_testvalue(board,col):
             except IndexError :
                 pass
             #verticale
-            
+            if len(boardtest[i]) > 4:
+                if boardtest[i][heighttest] == boardtest[i][heighttest-1] == boardtest[i][heighttest-2] == boardtest[i][heighttest-3]:
+                    score = 5
                 
             #diagonale croissante
             try:
