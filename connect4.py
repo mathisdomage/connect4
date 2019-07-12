@@ -89,10 +89,7 @@ def run():
                 print("It's Human Player Turn")
                 col = int(input("Which column do you want to play ? Stupid human"))
             if player == 2:
-                
-                col = robot_testvalue(board,col)
-                print(col)
-        
+                col = robot_testvalue(board,col)        
         play(col,board,player)
 
         if winning_move(board, col):
