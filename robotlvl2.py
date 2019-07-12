@@ -253,8 +253,6 @@ def robot_testvalue(board,col):
         boardscore.append(score)
         del boardtest[i][heighttest]
     maxvalue = max(boardscore)
-    print(maxvalue)
-    sleep(2)
     if boardscore.count(max(boardscore)) > 2:
         for i in range(len(boardscore)):
             if boardscore[i] == max(boardscore):
